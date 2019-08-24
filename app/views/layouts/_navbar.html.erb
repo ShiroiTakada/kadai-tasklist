@@ -7,10 +7,24 @@
     
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
+<% if logged_in? %>
+
         <li class="navbar-item">
+<%= link_to 'Logout', logout_path, method: :delete %>
+        </li>
+      </ul>
+      
+<% else %>      
+            
+
+           <li class="nav-item">
 <%= link_to 'Signup', signup_path, class: 'nav-link' %>
         </li>
-        <li class="navbar-item"><a href="#" class="nav-link">Login</a></li>
+        <li class="navb-item">
+<%= link_to 'Login', login_path, class: 'nav-link' %>          
+</li>
+
+<% end %>
       </ul>
     </div>
   </nav>

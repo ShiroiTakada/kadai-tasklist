@@ -1,16 +1,51 @@
+<% if logged_in? %>
+
 <h1>タスク一覧</h1>
 
-<ul>
-    <% @tasks.each do |task| %>
-    <li>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>ステータス</th>
+      <th>タスク</th>
+    </tr>
+  </thead>
+  <tbody>
+      
+<% @tasks.each do |task| %>
+    <tr>
+      <td>
 <%= link_to task.id, task %>
-
-<%= task.status%>
- &gt; 
+</td>
+      <td>
+<%= task.status %>
+</td>
+      <td>
 <%= task.content %>
-</li>
-  
-  <% end %>
-</ul>
+ </td> 
+    </tr>
+<% end %>    
 
-<%= link_to '新規タスクの入力', new_task_path %>
+ </tbody>
+</table>
+
+  <div>
+<%= paginate @tasks %>
+  </div>
+
+
+<%= link_to '新規メッセージの投稿', new_task_path, class: "btn btn-primary" %>
+
+<% else %>
+ 
+<div class="center jumbotron">
+  <div class="text-center">
+    <h1>Welcome to the Tasklist</h1>
+    
+<%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+
+  </div>    
+</div>
+
+<% end %>          
