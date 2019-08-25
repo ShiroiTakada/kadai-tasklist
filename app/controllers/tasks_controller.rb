@@ -20,7 +20,7 @@ class TasksController < ApplicationController
       else
         @tasks = current_user.tasks.order(id: :desc).page(params[:page])
           flash.now[:danger] = 'Task が入力されませんでした'
-          render :'toppages/index'
+          render :new
       end      
   end
   
